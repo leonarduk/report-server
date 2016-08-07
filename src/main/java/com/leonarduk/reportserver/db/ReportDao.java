@@ -9,6 +9,8 @@ package com.leonarduk.reportserver.db;
 import java.util.List;
 
 public interface ReportDao {
+	Report findById(int id);
+
 	List<Report> list();
 
 	void save(Report report);

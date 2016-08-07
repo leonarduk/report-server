@@ -11,9 +11,20 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ReportDaoImpl implements ReportDao {
 	private SessionFactory sessionFactory;
+
+	@Override
+	public Report findById(final int id) {
+		try (final Session session = this.sessionFactory.openSession();) {
+			session.beginTransaction();
+			final Report report = session.get(Report.class, Integer.valueOf(id));
+			return report;
+		}
+	}
 
 	@Override
 	public List<Report> list() {
