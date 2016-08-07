@@ -1,82 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app id="WebApp_ID" version="2.4"
+ xmlns="http://java.sun.com/xml/ns/j2ee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ 
+ <display-name>Archetype Created Web Application</display-name>
+ <!--  moved to WebInitializer 
+ <servlet>
+   <servlet-name>dispatcher</servlet-name>
+   <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+   <load-on-startup>1</load-on-startup>
+ </servlet>
+ 
+ <servlet-mapping>
+   <servlet-name>dispatcher</servlet-name>
+   <url-pattern>/</url-pattern>
+ </servlet-mapping>
 
-    <display-name>Sample App</display-name>
-    <distributable/>
+<listener>
+   <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ </listener>  --> 
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            classpath:/applicationContext.xml
-            classpath:/applicationContext-dao.xml
-            classpath:/hdiv-config.xml
-        </param-value>
-    </context-param>
-
-    <filter>
-        <filter-name>sitemesh</filter-name>
-        <filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
-    </filter>
-
-    <!-- Filter Mappings -->
-    <filter-mapping>
-        <filter-name>sitemesh</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
-    <!-- HDIV Filters -->
-    <filter>
-        <filter-name>ValidatorFilter</filter-name>
-        <filter-class>org.hdiv.filter.ValidatorFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>ValidatorFilter</filter-name>
-        <servlet-name>sample</servlet-name>
-    </filter-mapping>
-
-    <!-- Default Page Support -->
-    <welcome-file-list>
-        <welcome-file>index</welcome-file>
-    </welcome-file-list>
-
-
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!-- HDIV Listener -->
-    <listener>
-        <listener-class>org.hdiv.listener.InitListener</listener-class>
-    </listener>
-
-
-    <!-- MVC Servlet - see sample-servlet.xml for specific config -->
-    <servlet>
-        <servlet-name>sample</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <!--<init-param>-->
-            <!--<param-name>contextClass</param-name>-->
-            <!--<param-value>-->
-                <!--org.springframework.web.context.support.AnnotationConfigWebApplicationContext-->
-            <!--</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>-->
-                <!--com.luckyryan.sample.config.appConfig-->
-            <!--</param-value>-->
-        <!--</init-param>-->
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>sample</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-
+ <!--  This is the file that tells it where to look  -->
+ <!--  replace with Config.java  
+ <context-param>
+   <param-name>contextConfigLocation</param-name>
+   <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+ </context-param>
+ -->
 
 </web-app>

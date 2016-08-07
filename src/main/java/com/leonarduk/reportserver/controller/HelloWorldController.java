@@ -1,31 +1,29 @@
 /**
  * HelloWorldController
- * 
+ *
  * @author ${author}
- * @since 06-Aug-2016
+ * @since 07-Aug-2016
  */
 package com.leonarduk.reportserver.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/helloWorld")
 public class HelloWorldController {
 
-	@RequestMapping(value = "/displayMessage/{msg}", method = RequestMethod.GET)
-	public String displayMessage(@PathVariable final String msg, final ModelMap model) {
-		model.addAttribute("msg", msg);
-		return "helloWorld";
-	}
+	@RequestMapping("/hello")
+	public String hello(
+	        @RequestParam(value = "name", required = false, defaultValue = "World!!") final String name,
+	        final Model model) {
 
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
-	public String hello(final ModelMap model) {
-		model.addAttribute("msg", "JCG Hello World!");
-		return "helloWorld";
+		model.addAttribute("name", name);
+		// returns the view name - so expects file called /WEB-INF/views/helloworld.jsp
+		// /WEB-INF/views is from dispatcher-servlet.xml
+		return "helloworld";
+
 	}
 
 }
